@@ -176,8 +176,8 @@ class ConfiguradorApp:
     
     def cerrar_sesión(self):
         #Habilitar CWMP
-        self.cerrar = self.driver.find_elements(By.XPATH,"//*[@id='menu_logout']")
-        self.cerrar[0].click()
+        self.cerrar = self.driver.find_element(By.XPATH,"//*[@id='menu_logout']")
+        self.cerrar.click()
         self.cerrar.send_keys(Keys.RETURN)
         time.sleep(5)
     
@@ -192,6 +192,7 @@ class ConfiguradorApp:
             try:
                 self.envia_uss()
                 self.enviar_pass()
+                self.cerrar_sesión()
                 driver.close()
             except:
                 print('Error al enviar password')
