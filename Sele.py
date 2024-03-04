@@ -44,14 +44,11 @@ class ConfiguradorApp:
         #frame lateral2       
         self.lat2 = ttk.Frame(self.root, width=50, style='barratop.TFrame')
         self.lat2.grid(row=0, column=3, sticky='ns', pady=0, padx=0, rowspan=4)
-        #frame campo de selección de fondo
-        self.fondo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.fondo = ttk.LabelFrame(self.root, text='Seleccione el excel con la lista de IPs', padding=(10,10))
-        self.fondo.grid(row=1, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
+        
         
         #Frame de datos1
         self.datos1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.datos1 = ttk.LabelFrame(self.root, text='usuario', padding=(10,10))
+        self.datos1 = ttk.LabelFrame(self.root, text='Seleccione el Excel que contiene las IPs', padding=(10,10))
         self.datos1.grid(row=2, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
         #Frame de datosExtras1
         self.datoEx1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
@@ -79,9 +76,9 @@ class ConfiguradorApp:
         style = ttk.Style()        
         style.configure("Dark.TFrame", foreground="white", background="#414141", borderwidth=0) 
         #primer campo
-        self.fonint1 = ttk.Frame(self.fondo, width=10, style='Dark.TFrame')
+        self.fonint1 = ttk.Frame(self.datos1, width=10, style='Dark.TFrame')
         self.fonint1.grid(row=0, column=0, sticky='ns', padx=0, pady=3, rowspan=2)
-        self.arch = Label(self.fondo, text="No hay lista Seleccionada",background="#414141", foreground="white")
+        self.arch = Label(self.datos1, text="No hay lista Seleccionada",background="#414141", foreground="white")
         self.arch.grid(row=1,column=1, sticky="ew", pady=10)
        
         #Label de datos usuario
@@ -122,15 +119,10 @@ class ConfiguradorApp:
     
     def buscador(self):
         try:
-            self.archivo = filedialog.askopenfilename(initialdir="/",
-                                                 title="Elija un archivo",
-                                                 filetypes=(("imagen", "*.jpg*"),
-                                                            ("all files", "*.*")))
-
-           
-            cuadromensaje = Label(self.arch, text="Archivo abierto: " + self.archivo, background="#414141", foreground="white")
-            cuadromensaje.pack()
-            
+            archivo2 = filedialog.askopenfilename(initialdir="/",
+                                                  title="Elija un archivo",
+                                                  filetypes=(("Hoja de Excel", "*.xls*"),
+                                                             ("all files", "*.*")))
             
         except Exception as e:
             
