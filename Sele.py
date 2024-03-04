@@ -115,7 +115,7 @@ class ConfiguradorApp:
         self.fonint2.grid(row=0, column=0, sticky='ew', padx=0, pady=3, rowspan=2)
         #boton de crear
         
-        self.dale = ttk.Button(self.listo, text="Iniciar", command=self.create_buttons, width=30, style='Fancy.TButton')
+        self.dale = ttk.Button(self.listo, text="Iniciar", command=self.scrapear, width=30, style='Fancy.TButton')
         self.dale.grid(row=1, column=1, sticky='ew', pady=10, padx=10)
         
         self.fonint3 = ttk.Frame(self.listo, width=300)
@@ -146,12 +146,21 @@ class ConfiguradorApp:
             print('error')
 
     
-    def create_web_driver():
-        driver = webdriver.Chrome()
+    def create_web_driver(self):
+        self.driver = webdriver.Chrome()
         
-        driver.set_window_position(0,0)
-        driver.maximize_window()
-        return driver
+        self.driver.set_window_position(0,0)
+        self.driver.maximize_window()
+        return self.driver
+    
+    def scrapear(self):
+        for dat in self.ip:
+            driver = self.create_web_driver()
+            direccion = 'http://' + dat 
+            print(direccion)
+            #Abre la página
+            driver.get(direccion)
+            time.sleep(5)
 
 
 if __name__=="__main__":
