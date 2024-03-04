@@ -153,6 +153,14 @@ class ConfiguradorApp:
         self.driver.maximize_window()
         return self.driver
     
+    def enviar_pass(self):
+        #Envía el password
+        self.obp = self.entry_contraseña.get("1.0", "end")
+        self.password = self.driver.find_element(By.XPATH,"//*[@id='pcPassword']")
+        self.password.send_keys(self.obp)
+        self.password.send_keys(Keys.RETURN)
+        time.sleep(8)
+    
     def scrapear(self):
         for dat in self.ip:
             driver = self.create_web_driver()
@@ -161,6 +169,8 @@ class ConfiguradorApp:
             #Abre la página
             driver.get(direccion)
             time.sleep(5)
+    
+
 
 
 if __name__=="__main__":
