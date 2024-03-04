@@ -185,8 +185,10 @@ class ConfiguradorApp:
             try:
                 self.envia_uss()
                 self.enviar_pass()
+                driver.close()
             except:
                 print('Error al enviar password')
+                driver.close()
     
 
 
