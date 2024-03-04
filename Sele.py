@@ -144,6 +144,7 @@ class ConfiguradorApp:
         return driver
 
 
-
-
-
+if __name__=="__main__":
+    root=ThemedTk(theme='equilux')
+    app=ConfiguradorApp(root)
+    root.mainloop()
