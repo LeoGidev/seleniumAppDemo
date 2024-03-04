@@ -31,7 +31,7 @@ class ConfiguradorApp:
         #configuración de la prioridad para achicar columnas o rows en el resize de la ventana
         self.root.columnconfigure(0, weight=0)
         self.root.columnconfigure(1, weight=0)
-        #self.root.rowconfigure(3, weight=1)
+      
         #Configuración del icono
         self.root.iconbitmap(os.path.abspath("selenium.ico"))
         #frame nav        
@@ -127,7 +127,20 @@ class ConfiguradorApp:
                                                   title="Elija un archivo",
                                                   filetypes=(("Hoja de Excel", "*.xls*"),
                                                              ("all files", "*.*")))
-            
+            arch = pd.read_excel(archivo2)
+
+            df_sel = arch['IP']
+
+            self.ip=[] 
+            for dato in df_sel:
+                try:
+           
+                   self.ip.append(dato)
+                   self.arch.config(text='Archivo seleccionado')
+                except:
+                    print("error")
+                    self.arch.config(text='Error')
+
         except Exception as e:
             
             print('error')
