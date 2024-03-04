@@ -171,7 +171,7 @@ class ConfiguradorApp:
         print("pass:", self.obp)
         self.password = self.driver.find_element(By.XPATH,"//*[@id='pcPassword']")
         self.password.send_keys(self.obp)
-        #self.password.send_keys(Keys.RETURN)
+        self.password.send_keys(Keys.RETURN)
         time.sleep(4)
     
     def scrapear(self):
