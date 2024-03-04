@@ -46,24 +46,24 @@ class ConfiguradorApp:
         self.lat2.grid(row=0, column=3, sticky='ns', pady=0, padx=0, rowspan=4)
         #frame campo de selección de fondo
         self.fondo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.fondo = ttk.LabelFrame(self.root, text='Seleccione la imagene de fondo', padding=(10,10))
+        self.fondo = ttk.LabelFrame(self.root, text='Seleccione el excel con la lista de IPs', padding=(10,10))
         self.fondo.grid(row=1, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
         
         #Frame de datos1
-        self.datos1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.datos1 = ttk.LabelFrame(self.root, text='Datos a inculuir desde Excel', padding=(10,10))
-        self.datos1.grid(row=2, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
+        #self.datos1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        #self.datos1 = ttk.LabelFrame(self.root, text='usuario', padding=(10,10))
+        #self.datos1.grid(row=2, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
         #Frame de datosExtras1
         self.datoEx1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.datoEx1 = ttk.LabelFrame(self.root, text='Datos Extras a incluir', padding=(10,10))
+        self.datoEx1 = ttk.LabelFrame(self.root, text='usuario', padding=(10,10))
         self.datoEx1.grid(row=3, column=1, sticky='ew', padx=0, pady=3)
         #Frame de datosExtras2
         self.datoEx2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.datoEx2 = ttk.LabelFrame(self.root, text='Datos Extras a incluir', padding=(10,10))
+        self.datoEx2 = ttk.LabelFrame(self.root, text='Pasword', padding=(10,10))
         self.datoEx2.grid(row=3, column=2, sticky='ew', padx=0, pady=3)
         #Frame de boton
         self.listo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.listo = ttk.LabelFrame(self.root, text='Crear Etiquetas', padding=(10,10))
+        self.listo = ttk.LabelFrame(self.root, text='Iniciar', padding=(10,10))
         self.listo.grid(row=4, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
         # Barra de progreso
         self.barra_progreso = ttk.Progressbar(self.root, length=300, mode='indeterminate')
