@@ -153,6 +153,14 @@ class ConfiguradorApp:
         self.driver.maximize_window()
         return self.driver
     
+    
+    def envia_uss(self):
+        #Envía el password
+        self.obu = self.texto4.get("1.0", "end")
+        self.uss = self.driver.find_element(By.XPATH,"//*[@id='userName']")
+        self.uss.send_keys(self.obp)
+        time.sleep(8)
+    
     def enviar_pass(self):
         #Envía el password
         self.obp = self.entry_contraseña.get("1.0", "end")
@@ -169,6 +177,11 @@ class ConfiguradorApp:
             #Abre la página
             driver.get(direccion)
             time.sleep(5)
+            try:
+                self.envia_uss()
+                self.enviar_pass()
+            except:
+                print('Error al enviar password')
     
 
 
