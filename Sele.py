@@ -175,7 +175,7 @@ class ConfiguradorApp:
         time.sleep(4)
     
     def cerrar_sesión(self):
-        #Habilitar CWMP
+        
         self.cerrar = self.driver.find_element(By.XPATH,"//*[@id='menu_logout']")
         self.cerrar.click()
         self.cerrar.send_keys(Keys.RETURN)
