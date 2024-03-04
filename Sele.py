@@ -1,3 +1,4 @@
+#Programado por Leo Gimenez, contacto: leogimenez.dev@gmail.com
 import pandas as pd
 from tkinter import Tk, Label, Text, Button, filedialog, Frame, ttk, Scale, Canvas
 import os
@@ -16,7 +17,7 @@ class ConfiguradorApp:
     def __init__(self, root):
         #configuración de ventana
         self.root = root
-        self.root.title('Selenium')
+        self.root.title('Selenium App')
         self.root.geometry("940x600")
         self.root.configure(bg='#414141')
         
@@ -32,7 +33,7 @@ class ConfiguradorApp:
         self.root.columnconfigure(1, weight=0)
         #self.root.rowconfigure(3, weight=1)
         #Configuración del icono
-        self.root.iconbitmap(os.path.abspath("icon.ico"))
+        self.root.iconbitmap(os.path.abspath("selenium.ico"))
 
 
 
