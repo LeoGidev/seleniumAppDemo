@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 import time
 import openpyxl
 from webdriver_manager.chrome import ChromeDriverManager
+wb = openpyxl.Workbook()
 
 
 class ConfiguradorApp:
@@ -34,6 +35,113 @@ class ConfiguradorApp:
         #self.root.rowconfigure(3, weight=1)
         #Configuración del icono
         self.root.iconbitmap(os.path.abspath("selenium.ico"))
+        #frame nav        
+        self.nav_bar = ttk.Frame(self.root, height=50, style='barratop.TFrame')
+        self.nav_bar.grid(row=0, column=0, sticky='ew', pady=0, padx=0, columnspan=4)
+        #frame lateral1       
+        self.lat1 = ttk.Frame(self.root, width=50, style='barratop.TFrame')
+        self.lat1.grid(row=0, column=0, sticky='ns', pady=0, padx=0, rowspan=4)
+        #frame lateral2       
+        self.lat2 = ttk.Frame(self.root, width=50, style='barratop.TFrame')
+        self.lat2.grid(row=0, column=3, sticky='ns', pady=0, padx=0, rowspan=4)
+        #frame campo de selección de fondo
+        self.fondo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        self.fondo = ttk.LabelFrame(self.root, text='Seleccione la imagene de fondo', padding=(10,10))
+        self.fondo.grid(row=1, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
+        
+        #Frame de datos1
+        self.datos1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        self.datos1 = ttk.LabelFrame(self.root, text='Datos a inculuir desde Excel', padding=(10,10))
+        self.datos1.grid(row=2, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
+        #Frame de datosExtras1
+        self.datoEx1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        self.datoEx1 = ttk.LabelFrame(self.root, text='Datos Extras a incluir', padding=(10,10))
+        self.datoEx1.grid(row=3, column=1, sticky='ew', padx=0, pady=3)
+        #Frame de datosExtras2
+        self.datoEx2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        self.datoEx2 = ttk.LabelFrame(self.root, text='Datos Extras a incluir', padding=(10,10))
+        self.datoEx2.grid(row=3, column=2, sticky='ew', padx=0, pady=3)
+        #Frame de boton
+        self.listo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        self.listo = ttk.LabelFrame(self.root, text='Crear Etiquetas', padding=(10,10))
+        self.listo.grid(row=4, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
+        # Barra de progreso
+        self.barra_progreso = ttk.Progressbar(self.root, length=300, mode='indeterminate')
+        self.barra_progreso.grid(row=5, column=1, columnspan=2, pady=10)
+        
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.create_labels_and_entries()
+        self.create_buttons()
+        
+    def create_labels_and_entries(self):
+        style = ttk.Style()        
+        style.configure("Dark.TFrame", foreground="white", background="#414141", borderwidth=0) 
+        #primer campo
+        self.fonint1 = ttk.Frame(self.fondo, width=10, style='Dark.TFrame')
+        self.fonint1.grid(row=0, column=0, sticky='ns', padx=0, pady=3, rowspan=2)
+        self.arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
+        self.arch.grid(row=1,column=1, sticky="ew", pady=10)
+        #Label de datos excel
+        self.lab1 = Label(self.datos1, text="Ingrese el nombre de cada celda:", background="#414141", foreground="white")
+        self.lab1.grid(row=1, column=0, pady=10, padx=10)
+        self.texto1 = Text(self.datos1, height=1, width=10)
+        self.texto1.grid(row=1, column=1, sticky='e', pady=10, padx=10)
+        self.texto2 = Text(self.datos1, height=1, width=10)
+        self.texto2.grid(row=1, column=2, sticky='e', pady=10, padx=10)
+        self.texto3 = Text(self.datos1, height=1, width=10)
+        self.texto3.grid(row=1, column=3, sticky='e', pady=10, padx=10)
+        self.texto1.bind('<KeyRelease>', self.check_entries)
+        self.texto2.bind('<KeyRelease>', self.check_entries)
+        self.texto3.bind('<KeyRelease>', self.check_entries)
+        self.reslt1 = Label(self.datos1, text="No se ha seleccionado ningun archivo aún", background="#414141", foreground="white")
+        self.reslt1.grid(row=2, column=0, pady=10, padx=10, columnspan=5)
+        #Label de datos Extras
+        self.lab2 = Label(self.datoEx1, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
+        self.lab2.grid(row=1, column=0, pady=10, padx=10)
+        self.texto4 = Text(self.datoEx1, height=1, width=40)
+        self.texto4.grid(row=2, column=0, sticky='we', pady=10, padx=10)
+        #Label de datos Extras2
+        self.lab3 = Label(self.datoEx2, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
+        self.lab3.grid(row=1, column=0, pady=10, padx=10)
+        self.texto5 = Text(self.datoEx2, height=1, width=40)
+        self.texto5.grid(row=2, column=0, sticky='we', pady=10, padx=10)
+       
+        
+
+    def create_buttons(self):
+
+        style = ttk.Style()        
+        style.configure("Fancy.TButton", foreground="white", background="#0099ff", borderwidth=0) 
+               
+        style.configure("Dark.TFrame", foreground="white", background="#414141", borderwidth=0) 
+        
+        #boton de imagenes
+        self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1, style='Fancy.TButton')
+        self.btn1.grid(row=1, column=2, sticky='we', pady=10, padx=10)
+        #boton de datoexcel
+        self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2, state='disabled', style='Fancy.TButton')
+        self.btn2.grid(row=1, column=4, sticky='w', pady=10, padx=10)
+        
+        #frame para el boton final
+        self.fonint2 = ttk.Frame(self.listo, width=300)
+        self.fonint2.grid(row=0, column=0, sticky='ew', padx=0, pady=3, rowspan=2)
+        #boton de crear
+        
+        self.dale = ttk.Button(self.listo, text="Crear etiquetas", command=self.dibujar, width=30, style='Fancy.TButton')
+        self.dale.grid(row=1, column=1, sticky='ew', pady=10, padx=10)
+        
+        self.fonint3 = ttk.Frame(self.listo, width=300)
+        self.fonint3.grid(row=0, column=2, sticky='ew', padx=0, pady=3, rowspan=2)
+
+    
+    def create_web_driver():
+        driver = webdriver.Chrome()
+        
+        driver.set_window_position(0,0)
+        driver.maximize_window()
+        return driver
 
 
 
