@@ -156,20 +156,21 @@ class ConfiguradorApp:
     
     def envia_uss(self):
         #Envía el password
-        self.obu = self.texto4.get("1.0", "end")
+        #self.obu = self.texto4.get("1.0", "end")
+        self.obu = self.texto4.get("1.0", "end-1c")
         self.uss = self.driver.find_element(By.XPATH,"//*[@id='userName']")
         print(self.obu)
         time.sleep(10)
         print("ahora aqui")
-        #self.uss.send_keys(self.obu)
+        self.uss.send_keys(self.obu)
         time.sleep(4)
     
     def enviar_pass(self):
         #Envía el password
-        #self.obp = self.entry_contraseña.get("1.0", "end")
-        #self.password = self.driver.find_element(By.XPATH,"//*[@id='pcPassword']")
-        #self.password.send_keys(self.obp)
-        #self.password.send_keys(Keys.RETURN)
+        self.obp = self.entry_contraseña.get("1.0", "end-1c")
+        self.password = self.driver.find_element(By.XPATH,"//*[@id='pcPassword']")
+        self.password.send_keys(self.obp)
+        self.password.send_keys(Keys.RETURN)
         time.sleep(4)
     
     def scrapear(self):
