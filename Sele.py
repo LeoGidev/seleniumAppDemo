@@ -174,6 +174,13 @@ class ConfiguradorApp:
         self.password.send_keys(Keys.RETURN)
         time.sleep(4)
     
+    def cerrar_sesión(self):
+        #Habilitar CWMP
+        self.cerrar = self.driver.find_elements(By.XPATH,"//*[@id='menu_logout']")
+        self.cerrar[0].click()
+        self.cerrar.send_keys(Keys.RETURN)
+        time.sleep(5)
+    
     def scrapear(self):
         for dat in self.ip:
             driver = self.create_web_driver()
