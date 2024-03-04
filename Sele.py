@@ -12,6 +12,29 @@ import openpyxl
 from webdriver_manager.chrome import ChromeDriverManager
 
 
+class ConfiguradorApp:
+    def __init__(self, root):
+        #configuración de ventana
+        self.root = root
+        self.root.title('Selenium')
+        self.root.geometry("940x600")
+        self.root.configure(bg='#414141')
+        
+        #estilos de los frames
+        style = ttk.Style()        
+        self.root.set_theme('equilux')  
+        style.configure('barratop.TFrame', background='#414141')
+        style.configure('modulo.TFrame', background='white')
+        
+        
+        #configuración de la prioridad para achicar columnas o rows en el resize de la ventana
+        self.root.columnconfigure(0, weight=0)
+        self.root.columnconfigure(1, weight=0)
+        #self.root.rowconfigure(3, weight=1)
+        #Configuración del icono
+        self.root.iconbitmap(os.path.abspath("icon.ico"))
+
+
 
 
 
