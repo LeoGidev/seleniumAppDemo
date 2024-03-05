@@ -10,6 +10,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 
@@ -173,15 +175,55 @@ class ConfiguradorApp:
         self.password.send_keys(self.obp)
         self.password.send_keys(Keys.RETURN)
         time.sleep(4)
+
+    def diagnostico(self):
+        try:
+            # seleccion de fram
+            self.driver.switch_to.frame(1)  # Esto sucede porque tplink usaframes
+
+            # Espera hasta 10 segundos para que el elemento esté presente en el frame
+            wait = WebDriverWait(self.driver, 10)
+            self.diag = wait.until(
+                EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Diagnóstico')]"))
+            )
+
+            print("Botón encontrado")
+            self.diag.click()
+            print("Clic hecho")
+
+            # Vuelve al contexto principal después de trabajar con el frame
+            self.driver.switch_to.default_content()
+
+            # Agrega un tiempo de espera opcional si es necesario esperar a que se complete alguna acción
+            time.sleep(5)
+
+        except Exception as e2:
+                print(f"No se pudo selecionar el diagnostico: {e2}")
+
     
     def cerrar_sesión(self):
-        print("ingreso a cerrar seción")
-        self.cerrar = self.driver.find_element(By.ID,"menu_logout")
-        print("boton seleccionado")
-        self.cerrar.click()
-        print("clicl hecho")
-        self.cerrar.send_keys(Keys.RETURN)
-        time.sleep(5)
+        try:
+            # seleccion de fram
+            self.driver.switch_to.frame(1)  # Esto sucede porque tplink usaframes
+
+            # Espera hasta 10 segundos para que el elemento esté presente en el frame
+            wait = WebDriverWait(self.driver, 10)
+            self.cerrar = wait.until(
+                EC.presence_of_element_located((By.XPATH, "/html/body/div/div[1]/ul/li[17]/a"))
+            )
+
+            print("Botón encontrado")
+            self.cerrar.click()
+            print("Clic hecho")
+
+            # Vuelve al contexto principal después de trabajar con el frame
+            self.driver.switch_to.default_content()
+
+            # Agrega un tiempo de espera opcional si es necesario esperar a que se complete alguna acción
+            time.sleep(5)
+
+        except Exception as e:
+            print(f"No se pudo cerrar la sesión: {e}")
     
     def scrapear(self):
         for dat in self.ip:
@@ -194,6 +236,7 @@ class ConfiguradorApp:
             try:
                 self.envia_uss()
                 self.enviar_pass()
+                self.diagnostico()
                 self.cerrar_sesión()
                 driver.close()
             except Exception as e:
