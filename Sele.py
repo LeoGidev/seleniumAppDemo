@@ -266,7 +266,7 @@ class ConfiguradorApp:
             time.sleep(20)
 
         except Exception as e:
-            print(f"No se pudo poner DNS en la sesión: {e}")
+            print(f"No se pudo iniciar ping {e}")
 
     
     def scrapear(self):
