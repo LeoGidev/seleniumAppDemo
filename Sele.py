@@ -20,7 +20,7 @@ class ConfiguradorApp:
         #configuración de ventana
         self.root = root
         self.root.title('Selenium App')
-        self.root.geometry("940x600")
+        self.root.geometry("1100x400")
         self.root.configure(bg='#414141')
         
         #estilos de los frames
@@ -96,13 +96,20 @@ class ConfiguradorApp:
         self.fraUss2.grid(row=0, column=3, sticky='w', padx=0, pady=3, rowspan=3)
         
         #Label de datos paswordd
+        self.fraPsw1 = ttk.Frame(self.datoEx2, width=50)
+        self.fraPsw1.grid(row=0, column=0, sticky='e', padx=0, pady=3, rowspan=3)
+
         self.lab3 = Label(self.datoEx2, text="Ingrese el password", background="#414141", foreground="white", width=50)
-        self.lab3.grid(row=1, column=0, pady=10, padx=10)       
+        self.lab3.grid(row=1, column=1, pady=10, padx=10)       
         
         # Simular campo de contraseña con Entry
 
         self.entry_contraseña = tk.Entry(self.datoEx2, show="*", width=50)
-        self.entry_contraseña.grid(row=2, column=0, sticky='we', pady=10, padx=10)
+        self.entry_contraseña.grid(row=2, column=1, sticky='we', pady=10, padx=10)
+
+        self.fraPsw2 = ttk.Frame(self.datoEx2, width=50)
+        self.fraPsw2.grid(row=0, column=2, sticky='e', padx=0, pady=3, rowspan=3)
+        
         # Configurar asteriscos
         self.entry_contraseña.config(show="*")
        
