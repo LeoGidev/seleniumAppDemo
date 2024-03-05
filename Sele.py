@@ -176,16 +176,7 @@ class ConfiguradorApp:
         self.password.send_keys(Keys.RETURN)
         time.sleep(4)
 
-    def diagnostic(self):
-        
-        wait = WebDriverWait(self.driver, 10)
-        self.diag = wait.until(
-                EC.presence_of_element_located((By.XPATH, "/html/body/div/div[1]/ul/li[17]/ul/li[2]/a"))
-            )
-        self.diag.click()
-        # Vuelve al contexto principal después de trabajar con el frame
-        self.driver.switch_to.default_content()
-        time.sleep(4)
+   
     
     def tools(self):
         try:
@@ -211,6 +202,46 @@ class ConfiguradorApp:
         except Exception as e:
             print(f"No se pudo cerrar la sesión: {e}")
     
+    def diagnostic(self):
+        
+        wait = WebDriverWait(self.driver, 10)
+        self.diag = wait.until(
+                EC.presence_of_element_located((By.XPATH, "/html/body/div/div[1]/ul/li[17]/ul/li[2]/a"))
+            )
+        self.diag.click()
+        print("diagnostico seleccionado")
+        # Vuelve al contexto principal después de trabajar con el frame
+        self.driver.switch_to.default_content()
+        print(self.driver.page_source)
+
+        time.sleep(4)
+    
+    def dom(self):
+        try:
+            # seleccion de fram
+            self.driver.switch_to.frame(3)  # Esto sucede porque tplink usaframes
+            print("frame seleccionado")
+            print(self.driver.page_source)
+
+            # Espera hasta 10 segundos para que el elemento esté presente en el frame
+            waits = WebDriverWait(self.driver, 10)
+            self.dom = waits.until(
+                EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[1]/p[3]/input"))
+            )
+
+            print("Campo encontrado")
+            self.password.send_keys('8.8.8.8')
+            print("dns colocado en 8.8.8.8")
+
+            # Vuelve al contexto principal después de trabajar con el frame
+            #self.driver.switch_to.default_content()
+
+            # Agrega un tiempo de espera opcional si es necesario esperar a que se complete alguna acción
+            time.sleep(4)
+
+        except Exception as e:
+            print(f"No se pudo poner DNS la sesión: {e}")
+    
     def scrapear(self):
         for dat in self.ip:
             driver = self.create_web_driver()
@@ -225,6 +256,7 @@ class ConfiguradorApp:
                 
                 self.tools()
                 self.diagnostic()
+                self.dom()
                 driver.close()
             except Exception as e:
                 print('Error', e)
