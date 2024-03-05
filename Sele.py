@@ -77,7 +77,7 @@ class ConfiguradorApp:
         style.configure("Dark.TFrame", foreground="white", background="#414141", borderwidth=0) 
         
         #primer campo
-        self.fonint1 = ttk.Frame(self.datos1, width=10, style='Dark.TFrame')
+        self.fonint1 = ttk.Frame(self.datos1, width=100, style='Dark.TFrame')
         self.fonint1.grid(row=0, column=0, sticky='ns', padx=0, pady=3, rowspan=2)
         self.arch = Label(self.datos1, text="No hay lista Seleccionada",background="#414141", foreground="white")
         self.arch.grid(row=1,column=1, sticky="ew", pady=10)
@@ -86,12 +86,12 @@ class ConfiguradorApp:
         self.fraUss1 = ttk.Frame(self.datoEx1, width=100)
         self.fraUss1.grid(row=0, column=0, sticky='e', padx=0, pady=3, rowspan=2)
 
-        self.lab2 = Label(self.datoEx1, text="Ingrese el usuario", background="#414141", foreground="white")
+        self.lab2 = Label(self.datoEx1, text="Usuario:", background="#414141", foreground="white", width=10)
         self.lab2.grid(row=1, column=1, pady=10, padx=10)
-        self.texto4 = Text(self.datoEx1, height=1, width=20)
+        self.texto4 = Text(self.datoEx1, height=1, width=10)
         self.texto4.grid(row=2, column=1, sticky='ew', pady=10, padx=10)
         
-        self.fraUss2 = ttk.Frame(self.datoEx1, width=40)
+        self.fraUss2 = ttk.Frame(self.datoEx1, width=100)
         self.fraUss2.grid(row=0, column=3, sticky='w', padx=0, pady=3, rowspan=2)
         
         #Label de datos paswordd
