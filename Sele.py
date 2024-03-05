@@ -175,9 +175,11 @@ class ConfiguradorApp:
         time.sleep(4)
     
     def cerrar_sesión(self):
-        
-        self.cerrar = self.driver.find_element(By.XPATH,"//*[@id='menu_logout']")
+        print("ingreso a cerrar seción")
+        self.cerrar = self.driver.find_element(By.ID,"menu_logout")
+        print("boton seleccionado")
         self.cerrar.click()
+        print("clicl hecho")
         self.cerrar.send_keys(Keys.RETURN)
         time.sleep(5)
     
@@ -194,8 +196,8 @@ class ConfiguradorApp:
                 self.enviar_pass()
                 self.cerrar_sesión()
                 driver.close()
-            except:
-                print('Error al enviar password')
+            except Exception as e:
+                print('Error', e)
                 driver.close()
     
 
