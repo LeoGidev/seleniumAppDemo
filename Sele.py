@@ -83,23 +83,25 @@ class ConfiguradorApp:
         self.arch.grid(row=1,column=1, sticky="ew", pady=10)
        
         #Label de datos usuario
-        self.fraUss1 = ttk.Frame(self.datoEx1, width=100)
-        self.fraUss1.grid(row=0, column=0, sticky='e', padx=0, pady=3, rowspan=2)
+        self.fraUss1 = ttk.Frame(self.datoEx1, width=50)
+        self.fraUss1.grid(row=0, column=0, sticky='e', padx=0, pady=3, rowspan=3)
 
-        self.lab2 = Label(self.datoEx1, text="Usuario:", background="#414141", foreground="white", width=10)
+        self.lab2 = Label(self.datoEx1, text="Usuario:", background="#414141", foreground="white", width=50)
         self.lab2.grid(row=1, column=1, pady=10, padx=10)
-        self.texto4 = Text(self.datoEx1, height=1, width=10)
+        
+        self.texto4 = Text(self.datoEx1, height=1, width=1)
         self.texto4.grid(row=2, column=1, sticky='ew', pady=10, padx=10)
         
-        self.fraUss2 = ttk.Frame(self.datoEx1, width=100)
-        self.fraUss2.grid(row=0, column=3, sticky='w', padx=0, pady=3, rowspan=2)
+        self.fraUss2 = ttk.Frame(self.datoEx1, width=50)
+        self.fraUss2.grid(row=0, column=3, sticky='w', padx=0, pady=3, rowspan=3)
         
         #Label de datos paswordd
-        self.lab3 = Label(self.datoEx2, text="Ingrese el password", background="#414141", foreground="white")
+        self.lab3 = Label(self.datoEx2, text="Ingrese el password", background="#414141", foreground="white", width=50)
         self.lab3.grid(row=1, column=0, pady=10, padx=10)       
         
         # Simular campo de contraseña con Entry
-        self.entry_contraseña = tk.Entry(self.datoEx2, show="*", width=40)
+
+        self.entry_contraseña = tk.Entry(self.datoEx2, show="*", width=50)
         self.entry_contraseña.grid(row=2, column=0, sticky='we', pady=10, padx=10)
         # Configurar asteriscos
         self.entry_contraseña.config(show="*")
