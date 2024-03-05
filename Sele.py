@@ -176,32 +176,18 @@ class ConfiguradorApp:
         self.password.send_keys(Keys.RETURN)
         time.sleep(4)
 
-    def diagnostico(self):
-        try:
-            # seleccion de fram
-            self.driver.switch_to.frame(1)  # Esto sucede porque tplink usaframes
-
-            # Espera hasta 10 segundos para que el elemento esté presente en el frame
-            wait = WebDriverWait(self.driver, 10)
-            self.diag = wait.until(
-                EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Diagnóstico')]"))
+    def diagnostic(self):
+        
+        wait = WebDriverWait(self.driver, 10)
+        self.diag = wait.until(
+                EC.presence_of_element_located((By.XPATH, "/html/body/div/div[1]/ul/li[17]/ul/li[2]/a"))
             )
-
-            print("Botón encontrado")
-            self.diag.click()
-            print("Clic hecho")
-
-            # Vuelve al contexto principal después de trabajar con el frame
-            self.driver.switch_to.default_content()
-
-            # Agrega un tiempo de espera opcional si es necesario esperar a que se complete alguna acción
-            time.sleep(5)
-
-        except Exception as e2:
-                print(f"No se pudo selecionar el diagnostico: {e2}")
-
+        self.diag.click()
+        # Vuelve al contexto principal después de trabajar con el frame
+        self.driver.switch_to.default_content()
+        time.sleep(4)
     
-    def cerrar_sesión(self):
+    def tools(self):
         try:
             # seleccion de fram
             self.driver.switch_to.frame(1)  # Esto sucede porque tplink usaframes
@@ -217,7 +203,7 @@ class ConfiguradorApp:
             print("Clic hecho")
 
             # Vuelve al contexto principal después de trabajar con el frame
-            self.driver.switch_to.default_content()
+            #self.driver.switch_to.default_content()
 
             # Agrega un tiempo de espera opcional si es necesario esperar a que se complete alguna acción
             time.sleep(5)
@@ -236,8 +222,9 @@ class ConfiguradorApp:
             try:
                 self.envia_uss()
                 self.enviar_pass()
-                self.diagnostico()
-                self.cerrar_sesión()
+                
+                self.tools()
+                self.diagnostic()
                 driver.close()
             except Exception as e:
                 print('Error', e)
