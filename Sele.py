@@ -219,7 +219,7 @@ class ConfiguradorApp:
     def dom(self):
         try:
             # seleccion de fram
-            self.driver.switch_to.frame(3)  # Esto sucede porque tplink usaframes
+            self.driver.switch_to.frame(2)  # Esto sucede porque tplink usaframes
             print("frame seleccionado")
             print(self.driver.page_source)
 
