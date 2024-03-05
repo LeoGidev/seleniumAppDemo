@@ -230,7 +230,7 @@ class ConfiguradorApp:
             )
 
             print("Campo encontrado")
-            self.password.send_keys('8.8.8.8')
+            self.dom.send_keys('8.8.8.8')
             print("dns colocado en 8.8.8.8")
 
             # Vuelve al contexto principal después de trabajar con el frame
