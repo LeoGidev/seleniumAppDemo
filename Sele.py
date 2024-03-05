@@ -218,10 +218,10 @@ class ConfiguradorApp:
     
     def dom(self):
         try:
-            # seleccion de fram
-            self.driver.switch_to.frame(2)  # Esto sucede porque tplink usaframes
+            # seleccion de frame
+            self.driver.switch_to.frame("mainFrame")  # Esto sucede porque tplink usaframes
             print("frame seleccionado")
-            print(self.driver.page_source)
+            print(self.driver.print_page)
 
             # Espera hasta 10 segundos para que el elemento esté presente en el frame
             waits = WebDriverWait(self.driver, 10)
