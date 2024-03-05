@@ -93,7 +93,7 @@ class ConfiguradorApp:
         self.lab3.grid(row=1, column=0, pady=10, padx=10)       
         
         # Simular campo de contraseña con Entry
-        self.entry_contraseña = tk.Entry(self.datoEx2, show="*")
+        self.entry_contraseña = tk.Entry(self.datoEx2, show="*", width=40)
         self.entry_contraseña.grid(row=2, column=0, sticky='we', pady=10, padx=10)
         # Configurar asteriscos
         self.entry_contraseña.config(show="*")
