@@ -259,7 +259,7 @@ class ConfiguradorApp:
 
             print("Campo encontrado")
             self.ini_btn.click()
-            print("DNS colocado en 8.8.8.8")
+            print("Ping iniciado")
 
             # Vuelve al contexto principal después de trabajar con el frame
             self.driver.switch_to.default_content()            
