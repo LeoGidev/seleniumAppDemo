@@ -250,7 +250,7 @@ class ConfiguradorApp:
             # Espera hasta 10 segundos para que el elemento esté presente en el frame
             waits = WebDriverWait(self.driver, 10)
             self.ini_btn = waits.until(
-                EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[1]/p[3]/input"))
+                EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[1]/p[1]/input[3]"))
             )
 
             print("Campo encontrado")
@@ -282,6 +282,7 @@ class ConfiguradorApp:
                 self.tools()
                 self.diagnostic()
                 self.dom()
+                self.inicio()
                 driver.close()
             except Exception as e:
                 print('Error', e)
