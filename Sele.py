@@ -54,7 +54,7 @@ class ConfiguradorApp:
         #Frame de datosExtras1
         self.datoEx1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.datoEx1 = ttk.LabelFrame(self.root, text='usuario', padding=(10,10))
-        self.datoEx1.grid(row=3, column=1, sticky='ew', padx=0, pady=3)
+        self.datoEx1.grid(row=3, column=2, sticky='ew', padx=0, pady=3)
         #Frame de datosExtras2
         self.datoEx2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.datoEx2 = ttk.LabelFrame(self.root, text='Pasword', padding=(10,10))
@@ -192,11 +192,6 @@ class ConfiguradorApp:
             print("Botón encontrado")
             self.cerrar.click()
             print("Clic hecho")
-
-            # Vuelve al contexto principal después de trabajar con el frame
-            #self.driver.switch_to.default_content()
-
-            # Agrega un tiempo de espera opcional si es necesario esperar a que se complete alguna acción
             time.sleep(5)
 
         except Exception as e:
@@ -230,12 +225,7 @@ class ConfiguradorApp:
 
             print("Campo encontrado")
             self.dom_input.send_keys('8.8.8.8')
-            print("DNS colocado en 8.8.8.8")
-
-            # Vuelve al contexto principal después de trabajar con el frame
-            #self.driver.switch_to.default_content()
-
-            # Agrega un tiempo de espera opcional si es necesario esperar a que se complete alguna acción
+            print("DNS colocado en 8.8.8.8")           
             time.sleep(4)
 
         except Exception as e:
@@ -243,8 +233,7 @@ class ConfiguradorApp:
     
     def inicio(self):
         try:
-            # Cambia al frame "mainFrame"
-            #self.driver.switch_to.frame("mainFrame")
+           
             print("se busca inicio")
 
             # Espera hasta 10 segundos para que el elemento esté presente en el frame
@@ -258,10 +247,8 @@ class ConfiguradorApp:
             print("DNS colocado en 8.8.8.8")
 
             # Vuelve al contexto principal después de trabajar con el frame
-            self.driver.switch_to.default_content()
-
-            # Agrega un tiempo de espera opcional si es necesario esperar a que se complete alguna acción
-            time.sleep(4)
+            self.driver.switch_to.default_content()            
+            time.sleep(20)
 
         except Exception as e:
             print(f"No se pudo poner DNS en la sesión: {e}")
