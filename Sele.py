@@ -257,7 +257,7 @@ class ConfiguradorApp:
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[1]/p[1]/input[3]"))
             )
 
-            print("Campo encontrado")
+            print("Botón encontrado")
             self.ini_btn.click()
             print("Ping iniciado")
 
