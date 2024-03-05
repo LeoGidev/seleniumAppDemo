@@ -53,7 +53,7 @@ class ConfiguradorApp:
         self.datos1.grid(row=2, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
         #Frame de datosExtras1
         self.datoEx1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.datoEx1 = ttk.LabelFrame(self.root, text='usuario', padding=(10,10))
+        self.datoEx1 = ttk.LabelFrame(self.root, text='Usuario', padding=(10,10))
         self.datoEx1.grid(row=3, column=1, sticky='ew', padx=0, pady=3)
         #Frame de datosExtras2
         self.datoEx2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
